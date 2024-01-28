@@ -67,14 +67,14 @@ app_license = "mit"
 # Installation
 # ------------
 
-# before_install = "hsms.install.before_install"
-# after_install = "hsms.install.after_install"
+before_install = "hsms.install.before_install"
+after_install = "hsms.install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "hsms.uninstall.before_uninstall"
-# after_uninstall = "hsms.uninstall.after_uninstall"
+before_uninstall = "hsms.uninstall.before_uninstall"
+after_uninstall = "hsms.uninstall.after_uninstall"
 
 # Integration Setup
 # ------------------
