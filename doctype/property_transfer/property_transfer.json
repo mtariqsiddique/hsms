@@ -1,0 +1,184 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-01-28 17:32:17.847628",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_ta50",
+  "posting_date",
+  "column_break_xboj",
+  "project",
+  "column_break_girn",
+  "property_number",
+  "from_allotee_detail_section",
+  "from_customer",
+  "from_customer_name",
+  "from_customer_type",
+  "from_cnic",
+  "from_share_percentage",
+  "column_break_gpru",
+  "from_address",
+  "amended_from",
+  "section_break_cble",
+  "from_customer_partnership",
+  "section_break_zxrt",
+  "to_customer",
+  "to_customer_type",
+  "to_share_percentage"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_ta50",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Property Transfer",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "column_break_xboj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_girn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "property_number",
+   "fieldtype": "Link",
+   "label": "Property Number",
+   "options": "Plot Inventory",
+   "reqd": 1
+  },
+  {
+   "fieldname": "from_allotee_detail_section",
+   "fieldtype": "Section Break",
+   "label": "From Allotee Detail"
+  },
+  {
+   "fieldname": "from_customer",
+   "fieldtype": "Link",
+   "label": "From Allotee",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "from_customer.customer_name",
+   "fieldname": "from_customer_name",
+   "fieldtype": "Data",
+   "label": "From Allotee Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "from_customer_type",
+   "fieldtype": "Select",
+   "label": "Allotee Type",
+   "options": "Individual\nPartnership",
+   "reqd": 1
+  },
+  {
+   "fieldname": "from_cnic",
+   "fieldtype": "Data",
+   "label": "CNIC",
+   "reqd": 1
+  },
+  {
+   "fieldname": "from_share_percentage",
+   "fieldtype": "Float",
+   "label": "From Share Percentage",
+   "non_negative": 1,
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_gpru",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "from_address",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "section_break_cble",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "from_customer_partnership",
+   "fieldtype": "Table",
+   "label": "From Customer Partnership",
+   "options": "Customer Partnership"
+  },
+  {
+   "fieldname": "section_break_zxrt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "to_customer",
+   "fieldtype": "Link",
+   "label": "To Allotee",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "to_customer_type",
+   "fieldtype": "Select",
+   "label": "To Allotee Type"
+  },
+  {
+   "fieldname": "to_share_percentage",
+   "fieldtype": "Float",
+   "label": "Share Percentage",
+   "non_negative": 1,
+   "precision": "2",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-01-28 18:31:55.127511",
+ "modified_by": "Administrator",
+ "module": "hsms",
+ "name": "Property Transfer",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
