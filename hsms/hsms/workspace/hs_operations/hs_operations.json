@@ -1,0 +1,88 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"jcJMEbkshF\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">HS Operations</span>\",\"col\":12}},{\"id\":\"cTjk3LxJHY\",\"type\":\"card\",\"data\":{\"card_name\":\"Master Data\",\"col\":4}},{\"id\":\"aeswdps5JP\",\"type\":\"card\",\"data\":{\"card_name\":\"Document\",\"col\":4}}]",
+ "creation": "2024-01-29 22:30:40.835096",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "list",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "HS Operations",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Master Data",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Customer",
+   "link_count": 0,
+   "link_to": "Customer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Inventory Master Data",
+   "link_count": 0,
+   "link_to": "Inventory Master Data",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Document",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Property Allotment",
+   "link_count": 0,
+   "link_to": "Property Allotment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Property Transfer",
+   "link_count": 0,
+   "link_to": "Property Transfer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-01-29 22:39:11.800252",
+ "modified_by": "Administrator",
+ "module": "hsms",
+ "name": "HS Operations",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 22.0,
+ "shortcuts": [],
+ "title": "HS Operations"
+}
