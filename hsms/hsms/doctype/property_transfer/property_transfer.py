@@ -13,6 +13,8 @@ class PropertyTransfer(HSMS_Controller):
         validate_accounting_period_open(self)
         self.validate_from_customer_and_to_customer()
         self.validate_check_customer_master_data_transfer()
+        self.validate_transfer_type()
+        self.validate_transfer_table()
 
     def on_submit(self):
         self.make_gl_entries()
@@ -38,7 +40,21 @@ class PropertyTransfer(HSMS_Controller):
     #         customer = frappe.get_value('Plot List', {'name': self.plot_no}, 'customer')
     #         if customer != self.from_customer:
     #             frappe.throw('The master data customer does not match the payment customer')
-                
+
+    def validate_transfer_type(self):
+        payment_types = []
+        for row in self.transfer:
+            payment_type = row.transfer_type
+            if payment_type in payment_types:
+                frappe.throw(_("Payment Type '{0}' occurs more than once").format(payment_type))
+            else:
+                payment_types.append(payment_type)
+
+    def validate_transfer_table(self):
+         for row in self.transfer:
+              if row.net_amount <=0:
+                   frappe.throw(_("Payment Type '{0}' not less then zero ").format(row.transfer_type))
+
     def validate_share_percentage(self):
         if self.to_customer_type == "Individual":
             if flt(self.to_share_percentage) != 100.0:

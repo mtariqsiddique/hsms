@@ -1,0 +1,217 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-02-24 23:17:05.129099",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_yn1w",
+  "posting_date",
+  "amended_from",
+  "column_break_kipq",
+  "property_number",
+  "column_break_kfsp",
+  "company",
+  "invertory_owner_detail_section",
+  "member_name",
+  "cnic",
+  "column_break_vyfy",
+  "father_name",
+  "column_break_gewp",
+  "address",
+  "noc_amount_detail_section",
+  "noc_item",
+  "total_section",
+  "column_break_hjtr",
+  "column_break_cqqy",
+  "gross_amount",
+  "column_break_toit",
+  "discount",
+  "column_break_ijva",
+  "net_amount",
+  "section_break_uyqc",
+  "remarks",
+  "column_break_bloy",
+  "column_break_bplf"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_yn1w",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Member NOC",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_kipq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "property_number",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Property Number",
+   "options": "Inventory Master Data",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_kfsp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Inventory Master Data",
+   "reqd": 1
+  },
+  {
+   "fieldname": "invertory_owner_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Invertory Owner Detail"
+  },
+  {
+   "fieldname": "member_name",
+   "fieldtype": "Link",
+   "label": "Member Name",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cnic",
+   "fieldtype": "Data",
+   "label": "CNIC",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_vyfy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "father_name",
+   "fieldtype": "Data",
+   "label": "Father Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_gewp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "noc_amount_detail_section",
+   "fieldtype": "Section Break",
+   "label": "NOC Amount Detail"
+  },
+  {
+   "fieldname": "total_section",
+   "fieldtype": "Section Break",
+   "label": "Total"
+  },
+  {
+   "fieldname": "column_break_hjtr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_cqqy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gross_amount",
+   "fieldtype": "Currency",
+   "label": "Gross Amount",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_toit",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "discount",
+   "fieldtype": "Currency",
+   "label": "Discount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ijva",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "net_amount",
+   "fieldtype": "Currency",
+   "label": "Net Amount",
+   "non_negative": 1,
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_uyqc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "column_break_bloy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_bplf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "noc_item",
+   "fieldtype": "Table",
+   "options": "Member NOC Item"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-02-24 23:42:44.486197",
+ "modified_by": "Administrator",
+ "module": "hsms",
+ "name": "Member NOC",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

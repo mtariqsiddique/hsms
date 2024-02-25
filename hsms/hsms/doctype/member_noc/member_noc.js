@@ -1,26 +1,29 @@
 // Copyright (c) 2024, Tariq Siddique and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on("Property Transfer", {
+frappe.ui.form.on("Member NOC", {
+	refresh(frm) {
 
+	},
 });
 
-frappe.ui.form.on("Transfer Type Item", {
+
+frappe.ui.form.on("Member NOC Item", {
     gross_amount: function(frm, cdt, cdn) {
         calc_net_amount(frm, cdt, cdn)
         calc_total_transfer_amount(frm);
     },
     discount: function(frm, cdt, cdn) {
-        calc_net_amount(frm, cdt, cdn)
+        calc_discount_net_amount(frm, cdt, cdn)
         calc_total_transfer_amount(frm);
     },
     transfer_remove: function(frm, cdt, cdn) {
         calc_total_transfer_amount(frm);
     },
     transfer_clear_table: function(frm, cdt, cdn) {
-        frm.set_value('gross_transfer_amount', 0.0);
+        frm.set_value('gross_amount', 0.0);
         frm.set_value('discount', 0.0);
-        frm.set_value('net_transfer_amount', 0.0);
+        frm.set_value('net_amount', 0.0);
     }
 });
 
@@ -29,18 +32,18 @@ function calc_total_transfer_amount(frm) {
     let discount = 0;
     let netTotal = 0;
 
-    frm.doc.transfer.forEach(d => {
+    frm.doc.noc_item.forEach(d => {
         grossTotal += flt(d.gross_amount);
         discount += flt(d.discount);
         netTotal += flt(d.net_amount);
     });
 
-    frm.set_value('gross_transfer_amount', grossTotal);
+    frm.set_value('gross_amount', grossTotal);
     frm.set_value('discount', discount);
-    frm.set_value('net_transfer_amount', netTotal);
+    frm.set_value('net_amount', netTotal);
 }
 
-function calc_net_amount(frm, cdt, cdn) {    
+function calc_discount_net_amount(frm, cdt, cdn) {    
     let row = locals[cdt][cdn];
     let netAmount = row.gross_amount - row.discount;
 
@@ -58,4 +61,10 @@ function calc_net_amount(frm, cdt, cdn) {
     } else {
         frappe.model.set_value(cdt, cdn, 'net_amount', netAmount);
     }
+}
+
+function calc_net_amount(frm, cdt, cdn) {    
+    let row = locals[cdt][cdn];
+    let netAmount = row.gross_amount - row.discount;
+        frappe.model.set_value(cdt, cdn, 'net_amount', netAmount);
 }

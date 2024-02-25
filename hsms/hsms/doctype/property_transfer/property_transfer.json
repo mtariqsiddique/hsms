@@ -36,11 +36,15 @@
   "to_address",
   "section_break_oqlb",
   "to_customer_partnership",
+  "transfer_amount_section",
+  "transfer",
   "transfer_amount",
-  "gross_transfer_amount",
+  "column_break_jlxs",
   "column_break_wjti",
-  "discount",
+  "gross_transfer_amount",
   "column_break_ousy",
+  "discount",
+  "column_break_xdvm",
   "net_transfer_amount",
   "connection_tab"
  ],
@@ -203,16 +207,16 @@
   },
   {
    "fieldname": "transfer_amount",
-   "fieldtype": "Section Break",
-   "label": "Transfer Amount"
+   "fieldtype": "Section Break"
   },
   {
    "default": "0.00",
    "fieldname": "gross_transfer_amount",
-   "fieldtype": "Float",
+   "fieldtype": "Currency",
    "label": "Gross Transfer Amount",
    "non_negative": 1,
-   "precision": "2",
+   "precision": "3",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -222,10 +226,11 @@
   {
    "default": "0.00",
    "fieldname": "discount",
-   "fieldtype": "Float",
+   "fieldtype": "Currency",
    "label": "Discount",
    "non_negative": 1,
-   "precision": "2"
+   "precision": "3",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_ousy",
@@ -234,10 +239,10 @@
   {
    "default": "0.00",
    "fieldname": "net_transfer_amount",
-   "fieldtype": "Float",
+   "fieldtype": "Currency",
    "label": "Net Transfer Amoun",
    "non_negative": 1,
-   "precision": "2",
+   "precision": "3",
    "read_only": 1,
    "reqd": 1
   },
@@ -280,12 +285,31 @@
    "fieldtype": "Data",
    "label": "Father Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_jlxs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_xdvm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "transfer_amount_section",
+   "fieldtype": "Section Break",
+   "label": "Transfer Amount"
+  },
+  {
+   "fieldname": "transfer",
+   "fieldtype": "Table",
+   "options": "Transfer Type Item",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-01-30 17:41:50.539959",
+ "modified": "2024-02-24 22:41:06.405091",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Property Transfer",
