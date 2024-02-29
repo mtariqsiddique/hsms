@@ -46,7 +46,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Document",
-   "link_count": 2,
+   "link_count": 3,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -70,9 +70,19 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Member NOC",
+   "link_count": 0,
+   "link_to": "Member NOC",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-01-29 22:39:11.800252",
+ "modified": "2024-02-25 18:24:06.417320",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "HS Operations",

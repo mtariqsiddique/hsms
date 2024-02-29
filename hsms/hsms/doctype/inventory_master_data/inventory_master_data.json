@@ -229,7 +229,7 @@
    "fieldname": "block",
    "fieldtype": "Link",
    "label": "Block",
-   "options": "Block"
+   "options": "Inventory Master Data Block"
   },
   {
    "fieldname": "area",
@@ -283,14 +283,35 @@
    "fieldname": "property_type",
    "fieldtype": "Link",
    "label": "Property Type",
-   "options": "Property Type",
+   "options": "Inventory Master Data Property Type",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2024-01-30 16:05:30.803811",
+ "links": [
+  {
+   "group": "Accounts",
+   "link_doctype": "Journal Entry",
+   "link_fieldname": "property_number"
+  },
+  {
+   "group": "Operation",
+   "link_doctype": "Property Allotment",
+   "link_fieldname": "property_number"
+  },
+  {
+   "group": "Operation",
+   "link_doctype": "Property Transfer",
+   "link_fieldname": "property_number"
+  },
+  {
+   "group": "Operation",
+   "link_doctype": "Member NOC",
+   "link_fieldname": "property_number"
+  }
+ ],
+ "modified": "2024-02-26 13:58:18.307282",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Inventory Master Data",

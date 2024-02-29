@@ -1,0 +1,73 @@
+{
+ "actions": [],
+ "autoname": "field:transfer_type",
+ "creation": "2024-02-24 15:43:29.616003",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_r3eu",
+  "transfer_type",
+  "column_break_lamn",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_r3eu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "transfer_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Transfer Type",
+   "no_copy": 1,
+   "print_hide": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Property Transfer Item Type",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_lamn",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-02-25 21:01:53.554969",
+ "modified_by": "Administrator",
+ "module": "hsms",
+ "name": "Property Transfer Item Type",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1
+}

@@ -5,7 +5,7 @@ frappe.ui.form.on("Property Transfer", {
 
 });
 
-frappe.ui.form.on("Transfer Type Item", {
+frappe.ui.form.on("Property Transfer Item", {
     gross_amount: function(frm, cdt, cdn) {
         calc_net_amount(frm, cdt, cdn)
         calc_total_transfer_amount(frm);

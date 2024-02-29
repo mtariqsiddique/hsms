@@ -1,17 +1,19 @@
 {
  "actions": [],
- "allow_rename": 1,
+ "autoname": "format:NOC-{YYYY}-{#####}",
  "creation": "2024-02-24 23:17:05.129099",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_yn1w",
   "posting_date",
-  "amended_from",
+  "membership_number",
   "column_break_kipq",
   "property_number",
+  "receipt_number",
   "column_break_kfsp",
   "company",
+  "amended_from",
   "invertory_owner_detail_section",
   "member_name",
   "cnic",
@@ -32,7 +34,8 @@
   "section_break_uyqc",
   "remarks",
   "column_break_bloy",
-  "column_break_bplf"
+  "column_break_bplf",
+  "connection_tab"
  ],
  "fields": [
   {
@@ -77,7 +80,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Company",
-   "options": "Inventory Master Data",
+   "options": "Company",
    "reqd": 1
   },
   {
@@ -86,6 +89,7 @@
    "label": "Invertory Owner Detail"
   },
   {
+   "fetch_from": "property_number.customer",
    "fieldname": "member_name",
    "fieldtype": "Link",
    "label": "Member Name",
@@ -93,6 +97,7 @@
    "reqd": 1
   },
   {
+   "fetch_from": "member_name.id_card_no",
    "fieldname": "cnic",
    "fieldtype": "Data",
    "label": "CNIC",
@@ -104,6 +109,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "member_name.father_name",
    "fieldname": "father_name",
    "fieldtype": "Data",
    "label": "Father Name",
@@ -114,6 +120,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "member_name.primary_address",
    "fieldname": "address",
    "fieldtype": "Small Text",
    "label": "Address"
@@ -186,15 +193,40 @@
    "fieldname": "noc_item",
    "fieldtype": "Table",
    "options": "Member NOC Item"
+  },
+  {
+   "fieldname": "connection_tab",
+   "fieldtype": "Tab Break",
+   "label": "Connection",
+   "show_dashboard": 1
+  },
+  {
+   "fieldname": "membership_number",
+   "fieldtype": "Data",
+   "label": "Membership Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "receipt_number",
+   "fieldtype": "Data",
+   "label": "Receipt Number",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2024-02-24 23:42:44.486197",
+ "links": [
+  {
+   "group": "Accounts",
+   "link_doctype": "Journal Entry",
+   "link_fieldname": "document_number"
+  }
+ ],
+ "modified": "2024-02-26 12:45:07.194029",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Member NOC",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

@@ -102,7 +102,7 @@ class PropertyTransfer(HSMS_Controller):
                     "voucher_type": "Journal Entry",
                     "voucher_no": self.name,
                     "posting_date": self.posting_date,
-                    "user_remark": "self.remarks",
+                    "user_remark": self.remarks,
                     "document_number": self.name,
                     "document_type": "Property Transfer",
                     "property_number": self.property_number
@@ -114,7 +114,7 @@ class PropertyTransfer(HSMS_Controller):
                         "party": self.to_customer,
                         "debit_in_account_currency": self.net_transfer_amount,
                         "property_number": self.property_number,
-                        "cost_center": "",
+                        "cost_center": cost_center,
                         "is_advance": 0,
                         "document_number": self.name,
                         "document_type": "Property Transfer"
@@ -124,7 +124,7 @@ class PropertyTransfer(HSMS_Controller):
                         "credit_in_account_currency": self.net_transfer_amount,
                         "against": default_receivable_account,
                         "property_number": self.property_number,
-                        "cost_center": "",
+                        "cost_center": cost_center,
                         "is_advance": 0,
                         "document_number": self.name,
                         "document_type": "Property Transfer"

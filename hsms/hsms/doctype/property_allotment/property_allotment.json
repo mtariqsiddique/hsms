@@ -15,15 +15,21 @@
   "customer_information_section",
   "customer",
   "customer_name",
-  "address",
-  "column_break_lvjk",
-  "customer_type",
-  "share_percentage",
-  "contact_no",
-  "cnic",
   "father_name",
+  "column_break_mbqo",
+  "cnic",
+  "contact_no",
+  "share_percentage",
+  "column_break_lvjk",
+  "address",
+  "customer_type",
   "section_break_kthq",
   "customer_partnership",
+  "section_break_oxfu",
+  "remarks",
+  "column_break_vjkv",
+  "status",
+  "column_break_hijb",
   "connection"
  ],
  "fields": [
@@ -54,6 +60,8 @@
   {
    "fieldname": "property_number",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Property Number",
    "options": "Inventory Master Data",
    "reqd": 1
@@ -162,12 +170,42 @@
    "fieldtype": "Small Text",
    "label": "Address",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_oxfu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "column_break_vjkv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nTransferred"
+  },
+  {
+   "fieldname": "column_break_hijb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_mbqo",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-01-30 16:01:28.414893",
+ "modified": "2024-02-25 23:28:48.144608",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Property Allotment",

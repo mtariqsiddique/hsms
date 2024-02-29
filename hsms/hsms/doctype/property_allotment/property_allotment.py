@@ -11,22 +11,29 @@ class PropertyAllotment(HSMS_Controller):
     def validate(self):
         self.validate_posting_date()
         validate_accounting_period_open(self)
-        self.validate_plot_booking()
         self.validate_duplicates_customer_in_partnership()
         self.validate_share_percentage()
+        self.validate_duplicate_property_number()
 
     def on_submit(self):
         self.book_plot()
 
     def on_cancel(self):
         self.unbook_plot()
-
-    def validate_plot_booking(self):
-        if not self.property_number:
-            frappe.throw(_("Error: Plot number not specified in the document."))
-        plot_status = frappe.db.get_value("Inventory Master Data", self.property_number, 'status')
-        if plot_status == 'Booked':
-            frappe.throw(_('The {0} is not avaliable').format(frappe.get_desk_link("Inventory Master Data", self.property_number)))
+    
+    def validate_duplicate_property_number(self):
+        if self.property_number:
+            duplicate_property_number = frappe.get_value(
+            'Property Allotment',
+            filters={
+                'property_number': self.property_number,
+                'name': ('!=', self.name),
+                'docstatus': ('!=', 2)
+            },
+            fieldname='name'
+        )
+        if duplicate_property_number:
+            frappe.throw(_('The Property already allotted to the Member: {0}').format(frappe.get_desk_link('Property Allotment', duplicate_property_number)))
 
     def validate_share_percentage(self):
         if self.customer_type == "Individual":
@@ -88,9 +95,10 @@ class PropertyAllotment(HSMS_Controller):
             frappe.throw(_("Error: The selected plot is not available for booking."))
         
     def unbook_plot(self):
+        if self.status == "Transferred":
+            frappe.throw(_("Error: The selected property is further transfer."))
         plot_master = frappe.get_doc("Inventory Master Data", self.property_number)
-        if not self.token_number :
-            plot_master.update({
+        plot_master.update({
                 'status'            : "Available",
                 'customer'          : '',
                 'address'           : '',
@@ -104,22 +112,6 @@ class PropertyAllotment(HSMS_Controller):
 
         if self.customer_type == "Partnership":
             plot_master.set("customer_partnership", [])
-
-        if self.token_number :
-            plot_master.update({
-                'status'            : "Token",
-                'customer'          : self.customer,
-                'address'           : self.address,
-                'contact_no'        : self.contact_no,
-                'sales_broker'      : self.sales_broker,
-                'father_name'       : self.father_name,
-                'cnic'              : self.cnic,
-                'customer_type'     : '',
-                'share_percentage'  : '',
-            })
-
-            if self.customer_type == "Partnership":
-                plot_master.set("customer_partnership", [])
 
         plot_master.save()
         frappe.msgprint(_('{0} unbooked').format(frappe.get_desk_link('Inventory Master Data', plot_master.name)))

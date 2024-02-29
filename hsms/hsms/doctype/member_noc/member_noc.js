@@ -11,23 +11,23 @@ frappe.ui.form.on("Member NOC", {
 frappe.ui.form.on("Member NOC Item", {
     gross_amount: function(frm, cdt, cdn) {
         calc_net_amount(frm, cdt, cdn)
-        calc_total_transfer_amount(frm);
+        calc_total_amount(frm);
     },
     discount: function(frm, cdt, cdn) {
         calc_discount_net_amount(frm, cdt, cdn)
-        calc_total_transfer_amount(frm);
+        calc_total_amount(frm);
     },
-    transfer_remove: function(frm, cdt, cdn) {
-        calc_total_transfer_amount(frm);
+    noc_item_remove: function(frm, cdt, cdn) {
+        calc_total_amount(frm);
     },
-    transfer_clear_table: function(frm, cdt, cdn) {
+    noc_item_clear_table: function(frm, cdt, cdn) {
         frm.set_value('gross_amount', 0.0);
         frm.set_value('discount', 0.0);
         frm.set_value('net_amount', 0.0);
     }
 });
 
-function calc_total_transfer_amount(frm) {
+function calc_total_amount(frm) {
     let grossTotal = 0;
     let discount = 0;
     let netTotal = 0;

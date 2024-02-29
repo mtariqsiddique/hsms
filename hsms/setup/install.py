@@ -26,22 +26,22 @@ def get_custom_fields():
         {
             "label": "Housting Settings",
             "fieldname": "housting_settings",
-            "fieldtype": "Tab Break",
-            "insert_after": "expenses_included_in_valuation"
+            "fieldtype": "Section Break",
+            "insert_after": "exception_budget_approver_role"
         },
         {
-            "label": "Default Deduction Revenue Account",
-            "fieldname": "default_deduction_revenue_account",
+            "label": "Default NOC Revenue Account",
+            "fieldname": "default_noc_revenue_account",
             "fieldtype": "Link",
             "options": "Account",
-            "insert_after": "housting_settingss",
+            "insert_after": "housting_settings",
         },
         {
             "label": "Default Transfer Revenue Account",
             "fieldname": "default_transfer_revenue_account",
             "fieldtype": "Link",
             "options": "Account",
-            "insert_after": "default_deduction_revenue_account",
+            "insert_after": "default_noc_revenue_account",
         },
         {
             "fieldname": "col_break_real_estate",
@@ -49,11 +49,18 @@ def get_custom_fields():
             "insert_after": "default_transfer_revenue_account",
         },
         {
+            "label": "Default Letter Issuance Account",
+            "fieldname": "default_letter_issuance_account",
+            "fieldtype": "Link",
+            "options": "Account",
+            "insert_after": "col_break_real_estate",
+        },
+        {
             "label": "Default Cost Center",
             "fieldname": "real_estate_cost_center",
             "fieldtype": "Link",
             "options": "Cost Center",
-            "insert_after": "col_break_real_estate",
+            "insert_after": "default_letter_issuance_account",
         },
     ]
     custom_fields_customer = [
