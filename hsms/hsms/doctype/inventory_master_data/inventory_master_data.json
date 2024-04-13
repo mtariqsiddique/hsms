@@ -311,7 +311,7 @@
    "link_fieldname": "property_number"
   }
  ],
- "modified": "2024-02-26 13:58:18.307282",
+ "modified": "2024-02-29 23:44:32.168487",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Inventory Master Data",
@@ -327,6 +327,30 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
    "share": 1,
    "write": 1
   }

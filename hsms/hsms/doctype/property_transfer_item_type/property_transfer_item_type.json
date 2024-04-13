@@ -7,8 +7,7 @@
  "field_order": [
   "section_break_r3eu",
   "transfer_type",
-  "column_break_lamn",
-  "amended_from"
+  "column_break_lamn"
  ],
  "fields": [
   {
@@ -27,24 +26,13 @@
    "unique": 1
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Property Transfer Item Type",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
-  },
-  {
    "fieldname": "column_break_lamn",
    "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
  "links": [],
- "modified": "2024-02-25 21:01:53.554969",
+ "modified": "2024-03-01 02:03:37.526584",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Property Transfer Item Type",
@@ -61,10 +49,35 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
-   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
    "write": 1
   }
  ],
+ "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

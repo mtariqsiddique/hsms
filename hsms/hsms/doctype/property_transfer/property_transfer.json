@@ -331,7 +331,7 @@
    "link_fieldname": "document_number"
   }
  ],
- "modified": "2024-02-28 20:43:18.020661",
+ "modified": "2024-02-29 23:26:12.473528",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Property Transfer",
@@ -347,6 +347,32 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
    "share": 1,
    "submit": 1,
    "write": 1
