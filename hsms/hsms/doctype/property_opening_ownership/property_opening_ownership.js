@@ -1,7 +1,7 @@
 // Copyright (c) 2024, Tariq Siddique and contributors
 // For license information, please see license.txt
 
-// frappe.ui.form.on("Property Allotment", {
+// frappe.ui.form.on("Property Opening Ownership", {
 // 	refresh(frm) {
 
 // 	},

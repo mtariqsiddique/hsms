@@ -9,6 +9,11 @@ app_license = "mit"
 # Includes in <head>
 # ------------------
 
+website_context = {
+	"favicon": "/assets/hsms/images/smart_logo.svg",
+	"splash_image": "/assets/hsms/images/smart_biz_logo.svg",
+}
+
 # include js, css files in header of desk.html
 # app_include_css = "/assets/hsms/css/hsms.css"
 # app_include_js = "/assets/hsms/js/hsms.js"

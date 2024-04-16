@@ -7,18 +7,16 @@
  "field_order": [
   "section_break_yn1w",
   "posting_date",
-  "membership_number",
   "column_break_kipq",
   "property_number",
-  "receipt_number",
   "column_break_kfsp",
-  "company",
-  "amended_from",
+  "receipt_number",
   "invertory_owner_detail_section",
-  "member_name",
-  "cnic",
+  "customer",
+  "customer_name",
   "column_break_vyfy",
   "father_name",
+  "cnic",
   "column_break_gewp",
   "address",
   "noc_amount_detail_section",
@@ -34,7 +32,9 @@
   "section_break_uyqc",
   "remarks",
   "column_break_bloy",
+  "company",
   "column_break_bplf",
+  "amended_from",
   "connection_tab"
  ],
  "fields": [
@@ -89,19 +89,10 @@
    "label": "Invertory Owner Detail"
   },
   {
-   "fetch_from": "property_number.customer",
-   "fieldname": "member_name",
-   "fieldtype": "Link",
-   "label": "Member Name",
-   "options": "Customer",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "member_name.id_card_no",
+   "fetch_from": "property_number.cnic",
    "fieldname": "cnic",
    "fieldtype": "Data",
    "label": "CNIC",
-   "options": "Customer",
    "reqd": 1
   },
   {
@@ -201,15 +192,24 @@
    "show_dashboard": 1
   },
   {
-   "fieldname": "membership_number",
-   "fieldtype": "Data",
-   "label": "Membership Number",
-   "reqd": 1
-  },
-  {
    "fieldname": "receipt_number",
    "fieldtype": "Data",
    "label": "Receipt Number",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "property_number.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Member Name",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "property_number.customer",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Membership No",
+   "options": "Customer",
    "reqd": 1
   }
  ],
@@ -222,7 +222,7 @@
    "link_fieldname": "document_number"
   }
  ],
- "modified": "2024-02-29 23:41:56.073084",
+ "modified": "2024-04-17 00:22:48.892448",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Member NOC",
@@ -241,37 +241,9 @@
    "share": 1,
    "submit": 1,
    "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Accounts Manager",
-   "share": 1,
-   "submit": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Accounts User",
-   "share": 1,
-   "submit": 1,
-   "write": 1
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
- "track_changes": 1,
- "track_seen": 1
+ "states": []
 }

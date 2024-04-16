@@ -1,13 +1,12 @@
 {
  "actions": [],
- "allow_rename": 1,
+ "autoname": "format:POO-{######}",
  "creation": "2024-01-28 01:12:34.553400",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_66zv",
   "posting_date",
-  "amended_from",
   "column_break_aaou",
   "property_number",
   "column_break_xgot",
@@ -19,10 +18,10 @@
   "column_break_mbqo",
   "cnic",
   "contact_no",
+  "customer_type",
   "share_percentage",
   "column_break_lvjk",
   "address",
-  "customer_type",
   "section_break_kthq",
   "customer_partnership",
   "section_break_oxfu",
@@ -30,6 +29,7 @@
   "column_break_vjkv",
   "status",
   "column_break_hijb",
+  "amended_from",
   "connection"
  ],
  "fields": [
@@ -48,7 +48,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Property Allotment",
+   "options": "Property Opening Ownership",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -116,10 +116,8 @@
    "fieldname": "share_percentage",
    "fieldtype": "Float",
    "label": "Share Percentage",
-   "mandatory_depends_on": "eval: doc.customer_type == 'Partnership'",
    "non_negative": 1,
-   "precision": "2",
-   "reqd": 1
+   "precision": "2"
   },
   {
    "fieldname": "section_break_kthq",
@@ -131,7 +129,7 @@
    "fieldtype": "Table",
    "label": "Customer Partnership",
    "mandatory_depends_on": "eval: doc.customer_type == 'Partnership'",
-   "options": "Customer Partnership"
+   "options": "Property Opening Ownership Customer Partnership"
   },
   {
    "fieldname": "connection",
@@ -191,7 +189,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "Active\nTransferred"
+   "options": "Active\nTransferred",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_hijb",
@@ -205,10 +204,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-02-29 23:43:07.656166",
+ "modified": "2024-04-17 01:13:15.934601",
  "modified_by": "Administrator",
  "module": "hsms",
- "name": "Property Allotment",
+ "name": "Property Opening Ownership",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -225,19 +225,7 @@
    "write": 1
   },
   {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Accounts Manager",
-   "share": 1,
-   "submit": 1,
-   "write": 1
-  },
-  {
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,

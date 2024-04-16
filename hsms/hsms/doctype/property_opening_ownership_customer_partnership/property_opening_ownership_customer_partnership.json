@@ -1,16 +1,17 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2024-01-28 01:27:25.847058",
+ "creation": "2024-04-16 16:59:40.082864",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "customer",
   "customer_name",
-  "mobile_no",
+  "father_name",
   "share_percentage",
-  "column_break_entd",
+  "column_break_vhrd",
+  "mobile_no",
   "address"
  ],
  "fields": [
@@ -28,8 +29,28 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Customer Name",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
+  },
+  {
+   "fetch_from": "customer.father_name",
+   "fieldname": "father_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Father Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "share_percentage",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Share Percentage",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_vhrd",
+   "fieldtype": "Column Break"
   },
   {
    "fetch_from": "customer.mobile_no",
@@ -40,32 +61,22 @@
    "read_only": 1
   },
   {
-   "fieldname": "share_percentage",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Share Percentage",
-   "non_negative": 1,
-   "precision": "2",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_entd",
-   "fieldtype": "Column Break"
-  },
-  {
    "fetch_from": "customer.primary_address",
    "fieldname": "address",
    "fieldtype": "Small Text",
-   "label": "Address"
+   "in_list_view": 1,
+   "label": "Address",
+   "options": "Customer",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-01-28 11:50:12.733042",
+ "modified": "2024-04-16 17:08:58.163028",
  "modified_by": "Administrator",
  "module": "hsms",
- "name": "Customer Partnership",
+ "name": "Property Opening Ownership Customer Partnership",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

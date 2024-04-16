@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-04-17 01:18:56.744373",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "customer",
+  "customer_name",
+  "father_name",
+  "id_card_no",
+  "column_break_liau",
+  "share_percentage",
+  "mobile_no",
+  "address"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Member ID",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Member Name",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fetch_from": "customer.father_name",
+   "fieldname": "father_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Father name",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fetch_from": "customer.id_card_no",
+   "fieldname": "id_card_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "CNIC",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_liau",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "customer.father_name",
+   "fieldname": "share_percentage",
+   "fieldtype": "Float",
+   "label": "Share Percentage",
+   "no_copy": 1,
+   "non_negative": 1,
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "customer.mobile_no",
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Mobile No",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fetch_from": "customer.primary_address",
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address",
+   "no_copy": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-04-17 01:25:24.456236",
+ "modified_by": "Administrator",
+ "module": "hsms",
+ "name": "Inventory Master Data Customer Partnership",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

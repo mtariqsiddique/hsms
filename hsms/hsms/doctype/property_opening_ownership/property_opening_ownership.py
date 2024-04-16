@@ -5,14 +5,13 @@ import frappe
 from frappe import _
 from frappe.utils import flt
 
-from hsms.controllers.hsms_controller import HSMS_Controller, validate_accounting_period_open
+from hsms.controllers.hsms_controller import HSMS_Controller
 
-class PropertyAllotment(HSMS_Controller):
+class PropertyOpeningOwnership(HSMS_Controller):
     def validate(self):
         self.validate_posting_date()
-        validate_accounting_period_open(self)
         self.validate_duplicates_customer_in_partnership()
-        self.validate_share_percentage()
+        # self.validate_share_percentage()
         self.validate_duplicate_property_number()
 
     def on_submit(self):
@@ -24,7 +23,7 @@ class PropertyAllotment(HSMS_Controller):
     def validate_duplicate_property_number(self):
         if self.property_number:
             duplicate_property_number = frappe.get_value(
-            'Property Allotment',
+            'Property Opening Ownership',
             filters={
                 'property_number': self.property_number,
                 'name': ('!=', self.name),
@@ -33,7 +32,7 @@ class PropertyAllotment(HSMS_Controller):
             fieldname='name'
         )
         if duplicate_property_number:
-            frappe.throw(_('The Property already allotted to the Member: {0}').format(frappe.get_desk_link('Property Allotment', duplicate_property_number)))
+            frappe.throw(_('The Property already allotted to the Member: {0}').format(frappe.get_desk_link('Property Allocated', duplicate_property_number)))
 
     def validate_share_percentage(self):
         if self.customer_type == "Individual":
@@ -70,18 +69,22 @@ class PropertyAllotment(HSMS_Controller):
             plot_master.update({      
                 'status'            : "Allotted",
                 'customer'          : self.customer,
+                'customer_name'     : self.customer_name,
                 'address'           : self.address,
                 'contact_no'        : self.contact_no,
                 'father_name'       : self.father_name,
                 'cnic'              : self.cnic,
                 'customer_type'     : self.customer_type,
                 'share_percentage'  : self.share_percentage,
+                'document_type'     : "Property Opening Ownership",
+                'document_number'   : self.name,
             })
 
             if self.customer_type == "Partnership":
                 for customer in self.customer_partnership:
                     plot_master.append("customer_partnership", {
                     'customer': customer.customer,
+                    'customer_name': customer.customer_name,
                     'address': customer.address,
                     'mobile_no': customer.mobile_no,
                     'father_name': customer.father_name,
@@ -101,6 +104,7 @@ class PropertyAllotment(HSMS_Controller):
         plot_master.update({
                 'status'            : "Available",
                 'customer'          : '',
+                'customer_name'     : '',
                 'address'           : '',
                 'contact_no'        : '',
                 'sales_broker'      : '',
@@ -108,6 +112,8 @@ class PropertyAllotment(HSMS_Controller):
                 'cnic'              : '',
                 'customer_type'     : '',
                 'share_percentage'  : '',
+                'document_type'     : '',
+                'document_number'   : '',
             })
 
         if self.customer_type == "Partnership":

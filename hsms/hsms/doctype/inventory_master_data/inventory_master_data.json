@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:plot_name",
  "creation": "2024-01-15 14:22:04.479025",
@@ -30,6 +31,7 @@
   "cornor",
   "current_owner_detail_tab",
   "customer",
+  "customer_name",
   "address",
   "column_break_ayjoz",
   "father_name",
@@ -37,7 +39,7 @@
   "customer_type",
   "document_type",
   "column_break_5xzlh",
-  "contact_no",
+  "mobile_no",
   "share_percentage",
   "document_number",
   "section_break_xuau",
@@ -163,17 +165,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Customer Name",
-   "no_copy": 1,
+   "label": "Customer",
    "options": "Customer",
-   "read_only": 1
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "contact_no",
-   "fieldtype": "Data",
-   "label": "contact No.",
-   "no_copy": 1,
    "read_only": 1
   },
   {
@@ -204,25 +197,27 @@
    "fieldname": "customer_partnership",
    "fieldtype": "Table",
    "label": "Customer Partnership",
-   "options": "Customer Partnership",
+   "options": "Inventory Master Data Customer Partnership",
    "read_only": 1
   },
   {
    "allow_on_submit": 1,
    "fieldname": "document_number",
-   "fieldtype": "Data",
-   "hidden": 1,
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
    "label": "Document Number",
    "no_copy": 1,
+   "options": "document_type",
    "read_only": 1
   },
   {
    "allow_on_submit": 1,
    "fieldname": "document_type",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "hidden": 1,
    "label": "Document Type",
    "no_copy": 1,
+   "options": "DocType",
    "read_only": 1
   },
   {
@@ -285,10 +280,28 @@
    "label": "Property Type",
    "options": "Inventory Master Data Property Type",
    "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer Name",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "label": "Mobile No.",
+   "no_copy": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
  "links": [
   {
    "group": "Accounts",
@@ -297,7 +310,7 @@
   },
   {
    "group": "Operation",
-   "link_doctype": "Property Allotment",
+   "link_doctype": "Property Opening Ownership",
    "link_fieldname": "property_number"
   },
   {
@@ -311,7 +324,7 @@
    "link_fieldname": "property_number"
   }
  ],
- "modified": "2024-02-29 23:44:32.168487",
+ "modified": "2024-04-17 01:26:42.708258",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Inventory Master Data",
@@ -327,30 +340,6 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Accounts Manager",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Accounts User",
    "share": 1,
    "write": 1
   }

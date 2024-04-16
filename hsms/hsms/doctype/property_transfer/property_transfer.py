@@ -3,7 +3,7 @@
 
 import frappe
 from frappe import _
-from frappe.utils import flt
+from frappe.utils import flt, cstr
 
 from hsms.controllers.hsms_controller import HSMS_Controller, validate_accounting_period_open
 
@@ -129,7 +129,6 @@ class PropertyTransfer(HSMS_Controller):
                         "document_number": self.name,
                         "document_type": "Property Transfer"
                     })
-
                 journal_entry.insert(ignore_permissions=True)
                 journal_entry.submit()
 
@@ -137,63 +136,73 @@ class PropertyTransfer(HSMS_Controller):
                 frappe.msgprint(_('Journal Entry {0} created successfully').format(frappe.get_desk_link("Journal Entry", journal_entry.name)))
                 
     def update_property_master(self):
-            plot_master = frappe.get_doc("Inventory Master Data", self.property_number)    
-            plot_master.update({
-                        'customer': self.to_customer, 'address': self.to_address,
-                        'contact_no': self.to_contact_no,
+            inventory_master = frappe.get_doc("Inventory Master Data", self.property_number)    
+            inventory_master.update({
+                        'customer': self.to_customer, 'customer_name': self.to_customer_name, 
+                        'mobile_no': self.to_mobile_no, 'address': self.to_address,
                         'father_name': self.to_father_name, 'cnic': self.to_cnic,
                         'customer_type': self.to_customer_type,'share_percentage': self.to_share_percentage,
+                        'document_type':"Property Transfer",'document_number': self.name,
                     })
         
             if self.to_customer_type == "Individual":
-                plot_master.set("customer_partnership", [])
+                inventory_master.set("customer_partnership", [])
             
             elif self.to_customer_type == "Partnership":
                 for customer in self.to_customer_partnership:
-                    plot_master.append("customer_partnership", {
+                    inventory_master.append("customer_partnership", {
                     'customer': customer.customer,
+                    'customer_name': customer.customer_name,
                     'address': customer.address,
                     'mobile_no': customer.mobile_no,
                     'father_name': customer.father_name,
                     'id_card_no': customer.id_card_no,
                     'share_percentage': customer.share_percentage,
             })
-            plot_master.save()
-            frappe.msgprint(_('{0} successfully updated ').format(frappe.get_desk_link('Inventory Master Data', plot_master.name)))                    
-            # if self.document_type == "Plot Booking":
-            #     booking_doc = frappe.get_doc("Plot Booking", self.document_number)
-            #     booking_doc.update({'status' : "Property Transfer"})
-            #     booking_doc.save()
-            #     frappe.msgprint(_('{0} successfully updated').format(frappe.get_desk_link("Plot Booking", booking_doc.name)))
-            # if self.document_type == "Property Transfer":
-            #     trans_doc = frappe.get_doc("Property Transfer", self.document_number)
-            #     trans_doc.update({'status' : "Further Transferred"})
-            #     trans_doc.save()
-            #     frappe.msgprint(_('{0} successfully updated').format(frappe.get_desk_link("Property Transfer", trans_doc.name)))
-
+            inventory_master.save()
+            frappe.msgprint(_('{0} successfully updated ').format(frappe.get_desk_link('Inventory Master Data', inventory_master.name)))                    
+            
     def update_inventory_master_cancel(self):   
-            plot_master = frappe.get_doc('Inventory Master Data', self.property_number)
-            plot_master.update({
-                                'customer': self.from_customer, 'address': self.from_address,
-                                'contact_no': self.from_contact_no, 
+            inventory_master = frappe.get_doc('Inventory Master Data', self.property_number)
+            inventory_master.update({
+                                'customer': self.from_customer, 'customer_name': self.from_customer_name, 
+                                'mobile_no': self.from_mobile_no, 'address': self.from_address, 
                                 'father_name': self.from_father_name, 'cnic': self.from_cnic,
-                                 'customer_type': self.from_customer_type,'share_percentage': self.from_share_percentage,
+                                'customer_type': self.from_customer_type,'share_percentage': self.from_share_percentage,
+                                'document_type' :self.from_document_type, 'document_number':self.from_document_number,
                             })
             
             if self.from_customer_type == "Individual":
-                plot_master.set("customer_partnership", [])
+                inventory_master.set("customer_partnership", [])
 
             elif self.from_customer_type == "Partnership":
                 for customer in self.from_customer_partnership:
-                    plot_master.append("customer_partnership", {
+                    inventory_master.append("customer_partnership", {
                     'customer': customer.customer,
+                    'customer_name': customer.customer_name,
                     'address': customer.address,
                     'mobile_no': customer.mobile_no,
                     'father_name': customer.father_name,
                     'id_card_no': customer.id_card_no,
-                    'share_percentage': customer.share_percentage,
+                    'share_percentage': customer.share_percentage,                    
             })
+            inventory_master.save()
+            frappe.msgprint(_('{0} successfully updated').format(frappe.get_desk_link('Inventory Master Data', inventory_master.name)))    
 
-            plot_master.save()
-            frappe.msgprint(_('{0} successfully updated').format(frappe.get_desk_link('Plot List', plot_master.name)))    
 
+@frappe.whitelist()
+def get_customer_partnership(inv_master_data):      
+    data = []
+    pb_data = frappe.get_doc("Inventory Master Data", inv_master_data)
+    for item in pb_data.get("customer_partnership"):
+        data.append({
+            "name": item.get('name'),
+            "customer": item.get("customer"),
+            "customer_name": item.get("customer_name"),
+            "share_percentage": item.get("share_percentage"),
+            "father_name": item.get("father_name"),
+            "id_card_no": item.get("id_card_no"),
+            "mobile_no": item.get("mobile_no"),
+            "address": item.get("address"),
+        })
+    return data

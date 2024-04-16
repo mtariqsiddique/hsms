@@ -2,7 +2,47 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Property Transfer", {
+    setup(frm) {
+		frm.trigger("set_queries_inventory");
+	},
 
+	set_queries_inventory(frm) {
+		frm.set_query("property_number", function(frm) {
+            return {
+                filters: {
+                    'status': 'Allotted'
+                }
+            };
+		});
+	},
+    property_number: function(frm) {
+        frappe.call({
+            method: 'hsms.hsms.doctype.property_transfer.property_transfer.get_customer_partnership',
+            args: {
+                inv_master_data: frm.doc.property_number,
+            },
+            callback: function(data) {
+                console.log(data);
+                if (data.message) {
+                    frm.clear_table('from_customer_partnership');
+                    for (let i = 0; i < data.message.length; i++) {
+                        var row = frm.add_child('from_customer_partnership');
+                        row.customer = data.message[i].customer;
+                        row.customer_name = data.message[i].customer_name;
+                        row.father_name = data.message[i].father_name;
+                        row.id_card_no = data.message[i].id_card_no;
+                        row.mobile_no = data.message[i].mobile_no;
+                        row.address = data.message[i].address;
+                        row.share_percentage = data.message[i].share_percentage;
+                    }
+                    frm.refresh_fields('from_customer_partnership');        
+                } else {
+                    frappe.msgprint(__('Error: ') + data.exc);
+                }
+            }
+        });
+    },
+    
 });
 
 frappe.ui.form.on("Property Transfer Item", {

@@ -57,7 +57,7 @@ class MemberNOC(HSMS_Controller):
             journal_entry.append("accounts", {
                         "account": default_receivable_account,
                         "party_type": "Customer",
-                        "party": self.member_name,
+                        "party": self.customer,
                         "debit_in_account_currency": self.net_amount,
                         "property_number": self.property_number, 
                         "cost_center": "",
