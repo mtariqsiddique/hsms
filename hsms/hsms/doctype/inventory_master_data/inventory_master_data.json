@@ -13,12 +13,12 @@
   "company",
   "column_break_hxyju",
   "plot_name",
+  "membership_number",
   "section_break_us9uz",
   "block",
   "status",
   "column_break_3bbzj",
   "area",
-  "amended_from",
   "column_break_7g6t7",
   "uom",
   "prperty_feature_section",
@@ -133,15 +133,6 @@
    "fieldtype": "Tab Break",
    "label": "Connection",
    "show_dashboard": 1
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Inventory Master Data",
-   "print_hide": 1,
-   "read_only": 1
   },
   {
    "fieldname": "column_break_7g6t7",
@@ -299,6 +290,16 @@
    "label": "Mobile No.",
    "no_copy": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "membership_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Membership No.",
+   "no_copy": 1,
+   "reqd": 1,
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -324,7 +325,7 @@
    "link_fieldname": "property_number"
   }
  ],
- "modified": "2024-04-17 01:26:42.708258",
+ "modified": "2024-04-18 00:19:42.873215",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Inventory Master Data",
@@ -340,6 +341,28 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hsms User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hsms Manager",
    "share": 1,
    "write": 1
   }

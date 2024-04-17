@@ -71,7 +71,6 @@ website_context = {
 
 # Installation
 # ------------
-
 after_migrate = "hsms.setup.install.after_migrate"
 after_install = "hsms.setup.install.after_migrate"
 
@@ -79,6 +78,7 @@ after_install = "hsms.setup.install.after_migrate"
 # ------------
 
 before_uninstall = "hsms.setup.install.before_uninstall"
+
 # after_uninstall = "hsms.uninstall.after_uninstall"
 
 # Integration Setup

@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "autoname": "format:NOC-{YYYY}-{#####}",
  "creation": "2024-02-24 23:17:05.129099",
  "doctype": "DocType",
@@ -222,7 +223,7 @@
    "link_fieldname": "document_number"
   }
  ],
- "modified": "2024-04-17 00:22:48.892448",
+ "modified": "2024-04-18 00:41:12.596223",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Member NOC",
@@ -230,6 +231,8 @@
  "owner": "Administrator",
  "permissions": [
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -241,9 +244,37 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hsms User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hsms Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1
 }

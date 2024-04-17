@@ -12,6 +12,7 @@
   "property_number",
   "column_break_girn",
   "receipt_number",
+  "membership_number",
   "from_allotee_detail_section",
   "from_customer",
   "from_customer_name",
@@ -21,9 +22,9 @@
   "from_mobile_no",
   "from_customer_type",
   "from_share_percentage",
-  "from_document_type",
   "column_break_gpru",
   "from_address",
+  "from_document_type",
   "from_document_number",
   "section_break_cble",
   "column_break_abth",
@@ -381,6 +382,16 @@
    "fieldtype": "Data",
    "label": "Contact No",
    "read_only": 1
+  },
+  {
+   "fetch_from": "property_number.membership_number",
+   "fieldname": "membership_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Membership No",
+   "no_copy": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -392,7 +403,7 @@
    "link_fieldname": "document_number"
   }
  ],
- "modified": "2024-04-17 01:31:41.112587",
+ "modified": "2024-04-18 01:09:49.429086",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Property Transfer",
@@ -400,6 +411,8 @@
  "owner": "Administrator",
  "permissions": [
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -408,6 +421,31 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hsms User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hsms Manager",
    "share": 1,
    "submit": 1,
    "write": 1

@@ -2,13 +2,21 @@ import frappe
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
 
+# Define the function to be executed after migration
 def after_migrate():
-	create_custom_fields(get_custom_fields())
-
+    add_roles_on_install()
+    create_custom_fields(get_custom_fields())
 
 def before_uninstall():
-	delete_custom_fields(get_custom_fields())
+    delete_role()
+    delete_custom_fields(get_custom_fields())
 
+
+def delete_role():
+    role_names = ["Hsms Manager", "Hsms User"]
+    for role_name in role_names:
+        if frappe.db.exists("Role", role_name):
+            frappe.delete_doc("Role", role_name)
 
 def delete_custom_fields(custom_fields):
 	for doctype, fields in custom_fields.items():
@@ -20,6 +28,16 @@ def delete_custom_fields(custom_fields):
 				frappe.delete_doc("Custom Field", custom_field_name)
 
 		frappe.clear_cache(doctype=doctype)
+
+def add_roles_on_install():
+    role_names = ["Hsms Manager", "Hsms User"]
+    for role_name in role_names:
+        if not frappe.db.exists("Role", role_name):
+            role = frappe.get_doc({
+                "doctype": "Role",
+                "role_name": role_name,
+            })
+            role.insert()
 
 def get_custom_fields():
     custom_fields_company = [
@@ -80,7 +98,18 @@ def get_custom_fields():
             "insert_after": "father_name",
 			"reqd":1,
 			"no_copy":1,
+        },
+        {
+            "label": "Member Type",
+            "fieldname": "member_type",
+            "fieldtype": "Select",
+            "options": "\nOrginal Member \nAssociate Member",
+            "allow_in_quick_entry":1,
+            "insert_after": "id_card_no",
+			"reqd":1,
+			"no_copy":1,
         }
+
     ]
     custom_fields_Journal_Entry = [
         {
@@ -149,3 +178,4 @@ def get_custom_fields():
 		"Journal Entry": custom_fields_Journal_Entry,
 		"Journal Entry Account" : custom_fields_Journal_Entry_account,
     }
+

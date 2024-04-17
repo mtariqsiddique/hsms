@@ -26,7 +26,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-02-25 21:47:04.562223",
+ "modified": "2024-04-18 00:34:01.920951",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Inventory Master Data Block",
@@ -42,6 +42,28 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hsms User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hsms Manager",
    "share": 1,
    "write": 1
   }

@@ -15,8 +15,7 @@ class LetterIssuance(HSMS_Controller):
         
     def on_submit(self):
         self.make_gl_entries()
-        
-        
+              
     def validate_net_amount(self):
             if self.net_amount <=0: 
                    frappe.throw(_("Net Amount not less then zero "))
