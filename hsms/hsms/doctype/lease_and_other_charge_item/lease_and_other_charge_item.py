@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class LetterIssuanceType(Document):
+class LeaseAndOtherChargeItem(Document):
 	pass

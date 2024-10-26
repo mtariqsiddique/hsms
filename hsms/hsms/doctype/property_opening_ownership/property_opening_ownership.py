@@ -14,6 +14,7 @@ class PropertyOpeningOwnership(HSMS_Controller):
         # self.validate_share_percentage()
         self.validate_duplicate_property_number()
 
+
     def on_submit(self):
         self.book_plot()
 

@@ -62,9 +62,16 @@ def get_custom_fields():
             "insert_after": "default_noc_revenue_account",
         },
         {
+            "label": "Default Lease Account",
+            "fieldname": "default_lease_account",
+            "fieldtype": "Link",
+            "options": "Account",
+            "insert_after": "default_transfer_revenue_account",
+        },
+        {
             "fieldname": "col_break_real_estate",
             "fieldtype": "Column Break",
-            "insert_after": "default_transfer_revenue_account",
+            "insert_after": "default_lease_account",
         },
         {
             "label": "Default Letter Issuance Account",

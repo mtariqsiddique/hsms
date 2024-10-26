@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestLetterIssuanceType(FrappeTestCase):
+class TestLeaseAndOtherCharges(FrappeTestCase):
 	pass

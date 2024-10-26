@@ -3,7 +3,6 @@
 
 import frappe
 from frappe import _
-from frappe.utils import flt
 
 from hsms.controllers.hsms_controller import HSMS_Controller, validate_accounting_period_open
 
@@ -27,8 +26,9 @@ class MemberNOC(HSMS_Controller):
                     noc_types.append(payment_type)
         
     def validate_net_amount(self):
-            if self.net_amount <=0:
-                   frappe.throw(_("Net Amount not less then zero "))
+        for row in self.noc_item:
+            if row.net_amount <=0:
+                frappe.throw(_("Net Amount not less then zero '{0}'").format(row.description))
 
     def make_gl_entries(self):
         if self.net_amount != 0:
