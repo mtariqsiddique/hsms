@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_import": 1,
- "autoname": "format:NOC-{YYYY}-{#####}",
+ "autoname": "naming_series:",
  "creation": "2024-02-24 23:17:05.129099",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -34,6 +34,7 @@
   "remarks",
   "column_break_bloy",
   "company",
+  "naming_series",
   "column_break_bplf",
   "amended_from",
   "connection_tab"
@@ -143,6 +144,7 @@
   {
    "fieldname": "gross_amount",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Gross Amount",
    "precision": "2",
    "read_only": 1
@@ -207,12 +209,12 @@
    "reqd": 1
   },
   {
-   "fetch_from": "property_number.customer_name",
+   "fetch_from": "customer.customer_name",
    "fieldname": "customer_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Member Name",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -220,9 +222,18 @@
    "fieldname": "customer",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Membership No",
    "options": "Customer",
    "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "MNOC-.#######",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -234,11 +245,11 @@
    "link_fieldname": "document_number"
   }
  ],
- "modified": "2024-10-26 22:30:00.804094",
+ "modified": "2024-10-26 23:20:27.089981",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Member NOC",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

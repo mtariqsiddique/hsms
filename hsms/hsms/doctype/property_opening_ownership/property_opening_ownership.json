@@ -1,6 +1,7 @@
 {
  "actions": [],
- "autoname": "format:POO-{######}",
+ "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2024-01-28 01:12:34.553400",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -22,6 +23,7 @@
   "share_percentage",
   "column_break_lvjk",
   "address",
+  "naming_series",
   "section_break_kthq",
   "customer_partnership",
   "section_break_oxfu",
@@ -228,16 +230,23 @@
    "no_copy": 1,
    "read_only": 1,
    "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "POO-.#######"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-18 01:04:47.725566",
+ "modified": "2024-10-27 00:06:00.631023",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Property Opening Ownership",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

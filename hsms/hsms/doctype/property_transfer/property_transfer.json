@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:PT-{########}",
+ "autoname": "naming_series:",
  "creation": "2024-01-28 17:32:17.847628",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -55,8 +55,9 @@
   "remarks",
   "column_break_jyeo",
   "company",
-  "amended_from",
   "column_break_mnio",
+  "amended_from",
+  "naming_series",
   "connection_tab"
  ],
  "fields": [
@@ -108,7 +109,6 @@
    "in_list_view": 1,
    "label": "From Member",
    "options": "Customer",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -117,7 +117,6 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "From Member Name",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -392,6 +391,13 @@
    "label": "Membership No",
    "no_copy": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "PT-.########"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -403,11 +409,11 @@
    "link_fieldname": "document_number"
   }
  ],
- "modified": "2024-04-18 01:09:49.429086",
+ "modified": "2024-10-27 00:03:23.742816",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Property Transfer",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

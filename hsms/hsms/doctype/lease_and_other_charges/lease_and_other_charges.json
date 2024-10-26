@@ -1,7 +1,8 @@
 {
  "actions": [],
  "allow_import": 1,
- "autoname": "format:LAOC-{#######}",
+ "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2024-10-26 19:26:21.758000",
  "default_view": "List",
  "doctype": "DocType",
@@ -13,6 +14,7 @@
   "property_number",
   "column_break_kfsp",
   "receipt_number",
+  "naming_series",
   "invertory_owner_detail_section",
   "customer",
   "customer_name",
@@ -231,6 +233,14 @@
    "fieldname": "laoc_item",
    "fieldtype": "Table",
    "options": "Lease And Other Charge Item"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "naming_series",
+   "options": "LAOC-.#######",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -242,11 +252,11 @@
    "link_fieldname": "document_number"
   }
  ],
- "modified": "2024-10-26 22:31:16.989776",
+ "modified": "2024-10-26 23:17:28.048206",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Lease And Other Charges",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
