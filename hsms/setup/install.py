@@ -96,6 +96,7 @@ def get_custom_fields():
             "insert_after": "territory",
 			"allow_in_quick_entry":1,
 			"no_copy":1,
+            "reqd":1,
         },
 		{
             "label": "ID Card No",
@@ -110,7 +111,7 @@ def get_custom_fields():
             "label": "Member Type",
             "fieldname": "member_type",
             "fieldtype": "Select",
-            "options": "\nOrginal Member \nAssociate Member",
+            "options": "\nOrginal Member\nAssociate Member",
             "allow_in_quick_entry":1,
             "insert_after": "id_card_no",
 			"reqd":1,

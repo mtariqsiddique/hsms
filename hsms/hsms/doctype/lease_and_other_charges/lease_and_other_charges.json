@@ -94,6 +94,7 @@
    "fetch_from": "property_number.customer_name",
    "fieldname": "customer_name",
    "fieldtype": "Data",
+   "in_standard_filter": 1,
    "label": "Member Name",
    "reqd": 1
   },
@@ -102,10 +103,11 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "member_name.father_name",
+   "fetch_from": "customer.father_name",
    "fieldname": "father_name",
    "fieldtype": "Data",
    "label": "Father Name",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -113,6 +115,7 @@
    "fieldname": "cnic",
    "fieldtype": "Data",
    "label": "CNIC",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -120,7 +123,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "member_name.primary_address",
+   "fetch_from": "customer.primary_address",
    "fieldname": "address",
    "fieldtype": "Small Text",
    "label": "Address"
@@ -239,7 +242,7 @@
    "link_fieldname": "document_number"
   }
  ],
- "modified": "2024-10-26 19:30:04.898102",
+ "modified": "2024-10-26 22:31:16.989776",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Lease And Other Charges",

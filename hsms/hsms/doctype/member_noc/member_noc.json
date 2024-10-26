@@ -68,6 +68,7 @@
    "fieldname": "property_number",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Property Number",
    "options": "Inventory Master Data",
    "reqd": 1
@@ -85,6 +86,7 @@
    "reqd": 1
   },
   {
+   "collapsible": 1,
    "fieldname": "invertory_owner_detail_section",
    "fieldtype": "Section Break",
    "label": "Invertory Owner Detail"
@@ -94,6 +96,7 @@
    "fieldname": "cnic",
    "fieldtype": "Data",
    "label": "CNIC",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -101,10 +104,11 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "member_name.father_name",
+   "fetch_from": "customer.father_name",
    "fieldname": "father_name",
    "fieldtype": "Data",
    "label": "Father Name",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -112,10 +116,11 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "member_name.primary_address",
+   "fetch_from": "customer.primary_address",
    "fieldname": "address",
    "fieldtype": "Small Text",
-   "label": "Address"
+   "label": "Address",
+   "read_only": 1
   },
   {
    "fieldname": "noc_amount_detail_section",
@@ -159,6 +164,7 @@
   {
    "fieldname": "net_amount",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Net Amount",
    "non_negative": 1,
    "precision": "2",
@@ -195,6 +201,8 @@
   {
    "fieldname": "receipt_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Receipt Number",
    "reqd": 1
   },
@@ -202,6 +210,8 @@
    "fetch_from": "property_number.customer_name",
    "fieldname": "customer_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Member Name",
    "reqd": 1
   },
@@ -209,6 +219,7 @@
    "fetch_from": "property_number.customer",
    "fieldname": "customer",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Membership No",
    "options": "Customer",
    "reqd": 1
@@ -223,7 +234,7 @@
    "link_fieldname": "document_number"
   }
  ],
- "modified": "2024-04-18 00:41:12.596223",
+ "modified": "2024-10-26 22:30:00.804094",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Member NOC",
