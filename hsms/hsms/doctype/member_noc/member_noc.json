@@ -109,8 +109,7 @@
    "fieldname": "father_name",
    "fieldtype": "Data",
    "label": "Father Name",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "column_break_gewp",
@@ -245,7 +244,7 @@
    "link_fieldname": "document_number"
   }
  ],
- "modified": "2024-10-26 23:20:27.089981",
+ "modified": "2024-10-27 18:49:01.758780",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Member NOC",

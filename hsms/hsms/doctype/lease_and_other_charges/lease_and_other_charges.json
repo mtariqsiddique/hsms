@@ -12,9 +12,9 @@
   "posting_date",
   "column_break_kipq",
   "property_number",
+  "naming_series",
   "column_break_kfsp",
   "receipt_number",
-  "naming_series",
   "invertory_owner_detail_section",
   "customer",
   "customer_name",
@@ -27,6 +27,7 @@
   "laoc_item",
   "total_section",
   "column_break_hjtr",
+  "remarks",
   "column_break_cqqy",
   "gross_amount",
   "column_break_toit",
@@ -34,11 +35,10 @@
   "column_break_ijva",
   "net_amount",
   "section_break_uyqc",
-  "remarks",
-  "column_break_bloy",
   "company",
-  "column_break_bplf",
+  "column_break_bloy",
   "amended_from",
+  "column_break_bplf",
   "connection_tab"
  ],
  "fields": [
@@ -79,6 +79,7 @@
    "reqd": 1
   },
   {
+   "collapsible": 1,
    "fieldname": "invertory_owner_detail_section",
    "fieldtype": "Section Break",
    "label": "Invertory Owner Detail"
@@ -88,7 +89,7 @@
    "fieldname": "customer",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Membership No",
+   "label": "Member Code.",
    "options": "Customer",
    "reqd": 1
   },
@@ -109,8 +110,7 @@
    "fieldname": "father_name",
    "fieldtype": "Data",
    "label": "Father Name",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fetch_from": "property_number.cnic",
@@ -252,7 +252,7 @@
    "link_fieldname": "document_number"
   }
  ],
- "modified": "2024-10-26 23:17:28.048206",
+ "modified": "2024-10-27 18:52:49.317569",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Lease And Other Charges",
