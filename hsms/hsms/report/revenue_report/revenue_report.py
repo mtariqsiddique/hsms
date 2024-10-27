@@ -22,11 +22,8 @@ def execute(filters=None):
 
     def fetch_records(doc_type, child_table, fields, doctype_name_field, parent_customer_field, parent_customer_code, filter_field="posting_date"):
         records = []
-        parent_fields = ["name", "posting_date", parent_customer_field, parent_customer_code, "property_number"]
+        parent_fields = ["name", "posting_date", parent_customer_field, parent_customer_code, "property_number", "receipt_number"]
         
-        if frappe.get_meta(doc_type).has_field("receipt_number"):
-            parent_fields.append("receipt_number")
-
         conditions = [
             [doc_type, "docstatus", "=", 1],
             [doc_type, filter_field, ">=", from_date],
@@ -39,7 +36,7 @@ def execute(filters=None):
             for child in child_docs:
                 record = {
                     "posting_date": parent.posting_date,
-                    "receipt_number": parent.get("receipt_number"),  
+                    "receipt_number": parent.receipt_number,  
                     "customer_name": parent.get(parent_customer_field),
                     "customer_code": parent.get(parent_customer_code),
                     "property_number": parent.property_number,
