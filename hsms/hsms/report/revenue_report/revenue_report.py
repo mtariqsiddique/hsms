@@ -58,6 +58,6 @@ def execute(filters=None):
         data.extend(fetch_records("Lease And Other Charges", "Lease And Other Charge Item", ["description", "net_amount"], "description", "customer_name", "customer"))
 
     # Sort the data by `posting_date`
-    data = sorted(data, key=lambda x: x["posting_date"])
+    data = sorted(data, key=lambda x: (x["posting_date"], x["receipt_number"]))
 
     return columns, data

@@ -1,0 +1,180 @@
+/* Colours */
+:root {
+    --primary-color: #e2dacf;
+    --primary-color-1: #708090;
+    --primary-color-2: #FFD700;
+    --button-color: #3c9fe0;
+    --field-color: #FAF3E0;
+    --secondary-color: #7574ff;
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --gray-color: #888;
+  
+  }
+  
+  .navbar-light, .web-footer {
+    display: none;
+  }
+  
+  #page-login .container {
+    max-width: 100% !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    height: 100vh !important;
+    background: url("/assets/hsms/images/erp_background.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center;  
+    position: relative; 
+  }
+  
+  section {
+    position: absolute !important; 
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important; 
+    width: 400px !important;
+    height: 500px !important;
+    box-sizing: var(--button-color) !important;
+  
+  }
+  
+  .login-content-customize .page-card-customize  {
+    max-width: 100% !important;
+    padding: 0px !important;
+    width: 395px !important;
+    height: 300px !important;
+  }
+  
+  .login-content-customize  img {
+    max-height: 150px !important;
+    width: 150px !important;
+    margin: 0 auto !important; 
+    display: block; 
+  }
+  
+  .login-content-customize .app-login-name {
+    /* margin-top: 10px; */
+    background-color: #5b89a3ec !important;
+    border-radius: 25px;
+    height: 60px;
+    width: 100%;
+    border: 1px solid #fff;
+    transition: all ease 0.8s;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important; /* Centers content horizontally */
+    text-align: center; /* Ensures text is centered within the div */
+}
+
+.login-content-customize .app-login-name p {
+    color: white !important;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: inherit !important;
+    margin: 0; /* Remove any default margins to avoid misalignment */
+}
+
+  .page-card-body-customize input[type="text"],
+  .page-card-body-customize input[type="password"],
+  .page-card-body-customize input[type="email"] 
+  {
+    background-color: #f3f3f3;
+    color: #0f2dd49c;
+    height: 60px;
+    width: 100%;
+    margin-top: 20px;
+    padding-left: 40px; 
+    border: 1px solid #93a5ab;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  .login input:focus {
+    border-left: 4px solid #ccd8da;
+  }
+  
+  .password-field,
+  .email-field {
+    position: relative;
+  }
+  
+  .email-field .field-icon,
+  .password-field .field-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px; /* Adjust this value as needed */
+  }
+  
+  .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .page-card-body input[type="password"] {
+    padding-right: 40px;
+  }
+  
+  .btn-customize {
+    flex: 1;
+    margin: 5px; 
+    background-image: none;
+    color:white;
+    background-color:#5b89a3ec!important; 
+    padding: 8px 50px;
+    border-radius: 25px;
+    height: 60px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    border: 2px solid #fff;
+    font-family: inherit !important;
+  }
+  
+  .btn-customize:focus,
+  .btn-customize:hover,
+  .btn-customize.active,
+  .btn-customize:active {
+    border-color: black !important;
+    box-shadow: inset 0 0 100px 0 #7692A7;
+    color:white;
+    font-size: 20px;
+  }
+  
+  .forgot-password-message-customize p ,
+  .page-card-actions-customize .sign-up-message-customize {
+    float: right;
+    padding: 1px;
+    margin-right: 5px;
+    color: #FFF !important;
+    font-family: inherit !important;
+    text-decoration: none;
+    background-color:#d6d8e2;
+    border-radius: 10px;
+  }
+  
+  .forgot-password-message-customize:hover,
+  .page-card-actions-customize .sign-up-message-customize:hover{
+    background-color: transparent !important;
+    color: black !important;
+    text-decoration: none;
+  }
+  
+  .for-forgot .btn-customize {
+    margin-top: 10px !important;
+  }
+  
+  
+    @media screen and (max-width: 320px){
+      section {
+        width: 300px !important;
+        height: 500px !important;
+      }
+  }
+  

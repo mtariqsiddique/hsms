@@ -14,6 +14,19 @@ website_context = {
 	"splash_image": "/assets/hsms/images/smart_biz_logo.svg",
 }
 
+
+# include js, css files in header of desk.html
+app_include_css = [
+    "/assets/hsms/css/theme.css"
+]
+# app_include_css = "/assets/frappe_v15_theme/css/frappe_v15_theme.css"
+# app_include_js = "/assets/frappe_v15_theme/js/frappe_v15_theme.js"
+
+# include js, css files in header of web template
+web_include_css = [
+    # "/assets/frappe_v15_theme/css/ekotheme_web.css"
+    "/assets/hsms/css/login_page.css"
+]
 # include js, css files in header of desk.html
 # app_include_css = "/assets/hsms/css/hsms.css"
 # app_include_js = "/assets/hsms/js/hsms.js"
