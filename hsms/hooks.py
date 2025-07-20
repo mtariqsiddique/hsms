@@ -154,10 +154,14 @@ doc_events = {
             'hsms.events.journal_entry.check_plot_booking',
             'hsms.events.journal_entry.check_document_status',
         ],
+        'validate': [
+            'hsms.events.journal_entry.update_entry_type',
+        ],
         'autoname' :[
             'hsms.events.journal_entry.autoname_journal_entry'
         ]
     },
+    
     "Customer": {
         'validate': [
             'hsms.events.customer.validate_id_card_number_format',

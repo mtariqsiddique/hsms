@@ -17,6 +17,12 @@ def check_document_status(doc, method=None):
     #     if cust_pmt.document_number and not frappe.db.exists(doctype, {'name': cust_pmt.document_number, 'status': 'Active'}):  
     #         frappe.throw(_('The {0} is not Active').format(frappe.get_desk_link(doctype, cust_pmt.document_number)))
 
+def update_entry_type(doc, method=None):
+    if not doc.doc_type:
+        frappe.throw("Document type is required for Entry")
+    
+    if doc.doc_type in ("Payment Entry", "Receive Entry"):
+        doc.voucher_type = "Bank Entry"
 
 def autoname_journal_entry(doc, method=None):
     """
