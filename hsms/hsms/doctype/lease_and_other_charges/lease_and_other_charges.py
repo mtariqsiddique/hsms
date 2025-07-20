@@ -4,6 +4,7 @@
 import frappe
 from frappe import _
 from frappe.utils import flt
+from frappe.utils import add_days
 
 from hsms.controllers.hsms_controller import HSMS_Controller, validate_accounting_period_open
 
@@ -15,7 +16,7 @@ class LeaseAndOtherCharges(HSMS_Controller):
         self.validate_account_and_net_amount()
         
     def on_submit(self):
-        self.make_gl_entries()
+        self.make_sales_invoice()
         
     def validate_noc_type(self):
             noc_types = []
@@ -33,56 +34,50 @@ class LeaseAndOtherCharges(HSMS_Controller):
             if row.net_amount <=0:
                 frappe.throw(_("Net Amount not less then zero '{0}'").format(row.description))
 
-    def make_gl_entries(self):
+    def make_sales_invoice(self):
         if self.net_amount != 0:
             company = frappe.get_doc("Company", self.company)
             default_receivable_account = frappe.get_value("Company", company, "default_receivable_account")
-           
+        
             if not default_receivable_account:
                 frappe.throw('Please set Default Receivable Account in Company Settings')
             
             cost_center = frappe.get_value("Company", self.company, "real_estate_cost_center")
             if not cost_center:
                 frappe.throw('Please set Cost Centre in Company Settings')
+            
+            due_date = add_days(self.posting_date, 2)
 
-            journal_entry = frappe.get_doc({
-                    "doctype": "Journal Entry",
-                    "voucher_type": "Journal Entry",
-                    "doc_type":"Receive Entry",
-                    "voucher_no": self.name,
+            sales_invoice = frappe.get_doc({
+                    "doctype": "Sales Invoice",
+                    "customer": self.customer,
+                    "company": self.company,
                     "posting_date": self.posting_date,
-                    "user_remark": self.remarks,
+                    "due_date": due_date,
+                    "set_posting_time":1,
+                    "remarks": self.remarks,
+                    "cost_center": cost_center,
                     "document_number": self.name,
                     "document_type": "Lease And Other Charges",
-                    "property_number": self.property_number
+                    "property_number": self.property_number,
+                    "debit_to": default_receivable_account
                 })
                 
-            journal_entry.append("accounts", {
-                        "account": default_receivable_account,
-                        "party_type": "Customer",
-                        "party": self.customer,
-                        "debit_in_account_currency": self.net_amount,
-                        "property_number": self.property_number, 
-                        "cost_center": "",
-                        "is_advance": 0,
+            for item in self.laoc_item:
+                sales_invoice.append("items", {
+                        "item_name": item.description,
+                        "qty": 1,
+                        "rate": item.net_amount,
+                        "income_account": item.account,
+                        "cost_center": cost_center,
                         "document_number": self.name,
-                        "document_type": "Lease And Other Charges"
+                        "document_type": "Lease And Other Charges",
+                        "property_number": self.property_number,
                     })
-            for item in self.laoc_item:     
-                journal_entry.append("accounts", {
-                            "account": item.account,
-                            "credit_in_account_currency": item.net_amount,
-                            "against": default_receivable_account,
-                            "property_number": self.property_number,
-                            "cost_center": cost_center,
-                            "is_advance": 0,
-                            "document_number": self.name,
-                            "document_type": "Lease And Other Charges"
-                        })
 
-            journal_entry.insert(ignore_permissions=True)
-            journal_entry.submit()
+            sales_invoice.insert(ignore_permissions=True)
+            sales_invoice.submit()
 
             frappe.db.commit()
-            frappe.msgprint(_('Journal Entry {0} created successfully').format(frappe.get_desk_link("Journal Entry", journal_entry.name)))
-	
+            frappe.msgprint(_('Sales Invoice {0} created successfully').format(
+                frappe.get_desk_link("Sales Invoice", sales_invoice.name)))

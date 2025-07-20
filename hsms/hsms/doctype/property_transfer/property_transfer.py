@@ -3,7 +3,7 @@
 
 import frappe
 from frappe import _
-from frappe.utils import flt, cstr
+from frappe.utils import flt, cstr, add_days
 
 from hsms.controllers.hsms_controller import HSMS_Controller, validate_accounting_period_open
 
@@ -85,56 +85,62 @@ class PropertyTransfer(HSMS_Controller):
             frappe.throw(_('Duplicate customer found in the to customer partnership table: {0}').format(self.to_customer))
 
     def make_gl_entries(self):
-            if self.net_transfer_amount != 0:
-                company = frappe.get_doc("Company", self.company)
-                default_receivable_account = frappe.get_value("Company", company, "default_receivable_account")
-                transfer_account = frappe.get_value("Company", self.company, "default_transfer_revenue_account")
-                if not default_receivable_account:
-                    frappe.throw('Please set Default Receivable Account in Company Settings')
-                if not transfer_account:
-                    frappe.throw('Please set Default Transfer Revenue Account in Company Settings')
-                cost_center = frappe.get_value("Company", self.company, "real_estate_cost_center")
-                if not cost_center:
-                    frappe.throw('Please set Cost Centre in Company Settings')
+        if self.net_transfer_amount != 0:
+            company = frappe.get_doc("Company", self.company)
+            default_receivable_account = frappe.get_value("Company", company, "default_receivable_account")
+            transfer_account = frappe.get_value("Company", self.company, "default_transfer_revenue_account")
+            
+            if not default_receivable_account:
+                frappe.throw('Please set Default Receivable Account in Company Settings')
+            if not transfer_account:
+                frappe.throw('Please set Default Transfer Revenue Account in Company Settings')
+                
+            cost_center = frappe.get_value("Company", self.company, "real_estate_cost_center")
+            if not cost_center:
+                frappe.throw('Please set Cost Centre in Company Settings')
+                
+            due_date = add_days(self.posting_date, 2)
 
-                journal_entry = frappe.get_doc({
-                    "doctype": "Journal Entry",
-                    "voucher_type": "Journal Entry",
-                    "doc_type":"Receive Entry",
-                    "voucher_no": self.name,
-                    "posting_date": self.posting_date,
-                    "user_remark": self.remarks,
+            sales_invoice = frappe.get_doc({
+                "doctype": "Sales Invoice",
+                "customer": self.to_customer,
+                "company": self.company,
+                "posting_date": self.posting_date,
+                "due_date": due_date,
+                "set_posting_time": 1,
+                "remarks": self.remarks,
+                "cost_center": cost_center,
+                "document_number": self.name,
+                "document_type": "Property Transfer",
+                "property_number": self.property_number,
+                "debit_to": default_receivable_account
+            })
+            
+            for item in self.noc_item:
+                sales_invoice.append("items", {
+                    "item_name": item.noc_type,
+                    "qty": 1,
+                    "rate": item.net_amount,
+                    "income_account": transfer_account,
+                    "cost_center": cost_center,
                     "document_number": self.name,
                     "document_type": "Property Transfer",
-                    "property_number": self.property_number
+                    "property_number": self.property_number,
                 })
-                
-                journal_entry.append("accounts", {
-                        "account": default_receivable_account,
-                        "party_type": "Customer",
-                        "party": self.to_customer,
-                        "debit_in_account_currency": self.net_transfer_amount,
-                        "property_number": self.property_number,
-                        "cost_center": cost_center,
-                        "is_advance": 0,
-                        "document_number": self.name,
-                        "document_type": "Property Transfer"
-                    })
-                journal_entry.append("accounts", {
-                        "account": transfer_account,
-                        "credit_in_account_currency": self.net_transfer_amount,
-                        "against": default_receivable_account,
-                        "property_number": self.property_number,
-                        "cost_center": cost_center,
-                        "is_advance": 0,
-                        "document_number": self.name,
-                        "document_type": "Property Transfer"
-                    })
-                journal_entry.insert(ignore_permissions=True)
-                journal_entry.submit()
+                    
+            sales_invoice.append("payment_schedule", {
+                "due_date": due_date,
+                "invoice_portion": 100,
+                "payment_amount": self.net_amount
+            })
 
-                frappe.db.commit()
-                frappe.msgprint(_('Journal Entry {0} created successfully').format(frappe.get_desk_link("Journal Entry", journal_entry.name)))
+            # Submit with validation disabled
+            sales_invoice.insert(ignore_permissions=True)
+            sales_invoice.submit()
+
+            frappe.db.commit()
+            frappe.msgprint(_('Sales Invoice {0} created successfully').format(
+                frappe.get_desk_link("Sales Invoice", sales_invoice.name)))
                 
     def update_property_master(self):
             inventory_master = frappe.get_doc("Inventory Master Data", self.property_number)    

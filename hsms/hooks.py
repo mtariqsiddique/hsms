@@ -173,6 +173,12 @@ doc_events = {
             'hsms.events.payment_entry.autoname_payment_entry',
         ]
     },
+
+    "Sales Invoice": {
+        'before_cancel': 'hsms.events.sales_invoice.before_cancel',
+        'on_cancel': 'hsms.events.sales_invoice.on_cancel',
+        'autoname':'hsms.events.sales_invoice.autoname_sales_invoice',
+    },
 }
 
 

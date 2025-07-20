@@ -243,6 +243,7 @@
    "read_only": 1
   }
  ],
+ "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [
@@ -250,9 +251,14 @@
    "group": "Accounts",
    "link_doctype": "Journal Entry",
    "link_fieldname": "document_number"
+  },
+  {
+   "group": "Accounts",
+   "link_doctype": "Sales Invoice",
+   "link_fieldname": "document_number"
   }
  ],
- "modified": "2024-10-27 18:52:49.317569",
+ "modified": "2025-07-21 00:23:20.362007",
  "modified_by": "Administrator",
  "module": "hsms",
  "name": "Lease And Other Charges",
@@ -302,6 +308,7 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

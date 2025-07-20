@@ -198,11 +198,78 @@ def get_custom_fields():
         },
     ]
 
+    custom_fields_sales_invoice = [
+        
+        {
+            "label": "Link Document Type",
+            "fieldname": "document_type",
+            "fieldtype": "Link",
+			"options": "DocType",
+			"read_only":1,
+			"no_copy":1,
+            "insert_after": "is_opening",
+        },
+		{
+            "label": "Document Number",
+            "fieldname": "document_number",
+            "fieldtype": "Dynamic Link",
+			"options": "document_type",
+			"read_only":1,
+			"no_copy":1,
+            "insert_after": "document_type",
+        },
+		{
+            "label": "Property Number",
+            "fieldname": "property_number",
+            "fieldtype": "Link",
+			"options": "Inventory Master Data",
+			"read_only":1,
+			"no_copy":1,
+            "insert_after": "document_number",
+        }
+
+    ]
+    custom_fields_sales_invoice_item = [
+        {
+            "label": "Document Type",
+            "fieldname": "document_type",
+            "fieldtype": "Link",
+			"options": "DocType",
+			"read_only":1,
+			"no_copy":1,
+            "insert_after": "delivered_qty",
+        },
+		{
+            "label": "Document Number",
+            "fieldname": "document_number",
+            "fieldtype": "Dynamic Link",
+			"options": "document_type",
+			"read_only":1,
+			"no_copy":1,
+            "insert_after": "document_type",
+        },
+		{
+            "label": "Property Number",
+            "fieldname": "property_number",
+            "fieldtype": "Link",
+			"options": "Inventory Master Data",
+			"read_only":1,
+			"no_copy":1,
+            "insert_after": "document_number",
+        }
+    ]
+
+
+
     return {
         "Company": custom_fields_company,
         "Customer": custom_fields_customer,
 		"Journal Entry": custom_fields_Journal_Entry,
 		"Journal Entry Account" : custom_fields_Journal_Entry_account,
         "Fiscal Year" : custom_fields_fiscal_year,
+
+        "Sales Invoice":custom_fields_sales_invoice,
+        "Sales Invoice Item":custom_fields_sales_invoice_item,
+        		
     }
 
