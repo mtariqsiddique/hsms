@@ -152,13 +152,21 @@ doc_events = {
     "Journal Entry": {
         'on_cancel': [
             'hsms.events.journal_entry.check_plot_booking',
-            'hsms.events.journal_entry.check_document_status'
+            'hsms.events.journal_entry.check_document_status',
+        ],
+        'autoname' :[
+            'hsms.events.journal_entry.autoname_journal_entry'
         ]
     },
     "Customer": {
         'validate': [
             'hsms.events.customer.validate_id_card_number_format',
             "hsms.events.customer.validate_check_duplicate_cnic_number"
+        ]
+    },
+    "Payment Entry": {
+        'autoname': [
+            'hsms.events.payment_entry.autoname_payment_entry',
         ]
     },
 }

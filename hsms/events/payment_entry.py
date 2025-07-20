@@ -1,49 +1,21 @@
 import frappe
-from frappe import _
-from frappe.utils import getdate
-
-def check_plot_booking(doc, method=None):
-    pass
-    # if doc.get('document_type') == 'Cancellation Property' and doc.get('document_number'):
-    #     cacellation_propertry = frappe.get_doc('Cancellation Property', doc.get('document_number'))
-    #     if frappe.db.exists('Plot List', {'name': cacellation_propertry.plot_no, 'status':  ["in", ["Booked", "Token"]]}):
-    #         frappe.throw('Plot not avaliable for booking')
-
-def check_document_status(doc, method=None):
-    pass
-    # if doc.get('document_type') == 'Customer Payment' and doc.get('document_number'):
-    #     cust_pmt = frappe.get_doc('Customer Payment', doc.get('document_number'))
-    #     doctype = cust_pmt.document_type
-    #     if cust_pmt.document_number and not frappe.db.exists(doctype, {'name': cust_pmt.document_number, 'status': 'Active'}):  
-    #         frappe.throw(_('The {0} is not Active').format(frappe.get_desk_link(doctype, cust_pmt.document_number)))
-
-
-def autoname_journal_entry(doc, method=None):
-    """
-    Final working solution that handles:
-    - Payment Entry: Pay-2526-00001
-    - Receive Entry: Rec-2526-00001 
-    - Journal Entry: JE-2507-0001
-    """
+    
+def autoname_payment_entry(doc, method=None):
     if not doc.posting_date:
         frappe.throw("Posting Date is required for naming")
 
     try:
-        if doc.doc_type == "Payment Entry":
+        if doc.payment_type in ("Pay", "Internal Transfer") :
             doc.name = generate_payment_number(doc.posting_date)
-        elif doc.doc_type == "Receive Entry":
+        elif doc.payment_type == "Receive":
             doc.name = generate_receive_number(doc.posting_date)
-        else:  # Journal Entry
-            doc.name = generate_journal_number(doc.posting_date)
     except frappe.DuplicateEntryError:
         # Retry with new number if duplicate occurs
         frappe.db.rollback()
-        if doc.doc_type == "Payment Entry":
+        if doc.payment_type in ("Pay", "Internal Transfer") :
             doc.name = generate_payment_number(doc.posting_date, retry=True)
-        elif doc.doc_type == "Receive Entry":
+        elif doc.payment_type == "Receive":
             doc.name = generate_receive_number(doc.posting_date, retry=True)
-        else:
-            doc.name = generate_journal_number(doc.posting_date, retry=True)
 
 def generate_payment_number(posting_date, retry=False):
     """Generate payment number with fiscal year"""
@@ -70,20 +42,6 @@ def generate_receive_number(posting_date, retry=False):
         next_num = get_next_series_number(prefix)
     
     return f"{prefix}{next_num:05d}"
-
-def generate_journal_number(posting_date, retry=False):
-    """Generate monthly journal number"""
-    post_date = getdate(posting_date)
-    month_code = post_date.strftime("%y%m")
-    prefix = f"JE-{month_code}-"
-    
-    if retry:
-        current_max = get_current_max(prefix, "Journal Entry")
-        next_num = current_max + 1
-    else:
-        next_num = get_next_series_number(prefix)
-    
-    return f"{prefix}{next_num:04d}"
 
 def get_fiscal_short_name(posting_date):
     """Get fiscal year short code (2526 for 2025-2026)"""

@@ -117,11 +117,19 @@ def get_custom_fields():
 			"reqd":1,
 			"no_copy":1,
         }
-
     ]
     custom_fields_Journal_Entry = [
         {
             "label": "Document Type",
+            "fieldname": "doc_type",
+            "fieldtype": "Select",
+			"options": "\nJournal Entry\nPayment Entry\nReceive Entry",
+			"no_copy":1,
+            "insert_after": "voucher_type",
+            "reqd":1,
+        },		
+        {
+            "label": "Link Document Type",
             "fieldname": "document_type",
             "fieldtype": "Link",
 			"options": "DocType",
@@ -129,7 +137,6 @@ def get_custom_fields():
 			"no_copy":1,
             "insert_after": "cheque_date",
         },
-		
 		{
             "label": "Document Number",
             "fieldname": "document_number",
@@ -179,11 +186,23 @@ def get_custom_fields():
             "insert_after": "document_number",
         }
     ]
-	
+    custom_fields_fiscal_year = [
+        {
+            "label": "Fiscal Year Short Name",
+            "fieldname": "fiscal_year_short_name",
+            "fieldtype": "Data",
+			"no_copy":1,
+            "insert_after": "year_end_date",
+            "unique":1,
+            "reqd":1,
+        },
+    ]
+
     return {
         "Company": custom_fields_company,
         "Customer": custom_fields_customer,
 		"Journal Entry": custom_fields_Journal_Entry,
 		"Journal Entry Account" : custom_fields_Journal_Entry_account,
+        "Fiscal Year" : custom_fields_fiscal_year,
     }
 

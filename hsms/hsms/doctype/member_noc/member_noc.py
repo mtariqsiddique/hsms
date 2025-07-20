@@ -46,6 +46,7 @@ class MemberNOC(HSMS_Controller):
             journal_entry = frappe.get_doc({
                     "doctype": "Journal Entry",
                     "voucher_type": "Journal Entry",
+                    "doc_type":"Receive Entry",
                     "voucher_no": self.name,
                     "posting_date": self.posting_date,
                     "user_remark": self.remarks,
