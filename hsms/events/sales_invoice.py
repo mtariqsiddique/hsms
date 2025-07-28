@@ -82,3 +82,4 @@ def get_fiscal_year(posting_date):
         frappe.throw(f"No active Fiscal Year found for date {posting_date}")
     
     return fiscal
+

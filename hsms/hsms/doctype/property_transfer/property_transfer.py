@@ -116,9 +116,9 @@ class PropertyTransfer(HSMS_Controller):
                 "debit_to": default_receivable_account
             })
             
-            for item in self.noc_item:
+            for item in self.transfer:
                 sales_invoice.append("items", {
-                    "item_name": item.noc_type,
+                    "item_name": item.transfer_type,
                     "qty": 1,
                     "rate": item.net_amount,
                     "income_account": transfer_account,
@@ -131,7 +131,7 @@ class PropertyTransfer(HSMS_Controller):
             sales_invoice.append("payment_schedule", {
                 "due_date": due_date,
                 "invoice_portion": 100,
-                "payment_amount": self.net_amount
+                "payment_amount": self.net_transfer_amount
             })
 
             # Submit with validation disabled
